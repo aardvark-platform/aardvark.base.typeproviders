@@ -5,13 +5,13 @@ open System.Reflection
 [<assembly: AssemblyTitleAttribute("Aardvark.Base.TypeProviders.DesignTime")>]
 [<assembly: AssemblyProductAttribute("Aardvark.Base.TypeProviders.DesignTime")>]
 [<assembly: AssemblyDescriptionAttribute("Peano types")>]
-[<assembly: AssemblyVersionAttribute("1.2.3.4")>]
-[<assembly: AssemblyFileVersionAttribute("1.2.3.4")>]
+[<assembly: AssemblyVersionAttribute("1.0.0.0")>]
+[<assembly: AssemblyFileVersionAttribute("1.0.0.0")>]
 do ()
 
 module internal AssemblyVersionInformation =
     let [<Literal>] AssemblyTitle = "Aardvark.Base.TypeProviders.DesignTime"
     let [<Literal>] AssemblyProduct = "Aardvark.Base.TypeProviders.DesignTime"
     let [<Literal>] AssemblyDescription = "Peano types"
-    let [<Literal>] AssemblyVersion = "1.2.3.4"
-    let [<Literal>] AssemblyFileVersion = "1.2.3.4"
+    let [<Literal>] AssemblyVersion = "1.0.0.0"
+    let [<Literal>] AssemblyFileVersion = "1.0.0.0"
