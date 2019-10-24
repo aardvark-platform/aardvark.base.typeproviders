@@ -1,0 +1,22 @@
+type file
+id Aardvark.Base.TypeProviders
+authors Aardvark Platform Team
+owners Aardvark Platform Team
+projectUrl http://github.com/aardvark-platform
+licenseUrl http://www.apache.org/licenses/LICENSE-2.0.txt
+description
+    Aardvark is an open-source platform for visual computing, real-time graphics and visualization.
+include-pdbs true
+dependencies
+  framework: net45
+    FSharp.Core >= 3.1.2.5
+  framework: netstandard20
+    FSharp.Core >= 4.2.3
+files
+  pack/lib/netstandard2.0/* => lib/netstandard2.0
+  pack/lib/net45/* => lib/net45
+  pack/typeproviders/fsharp41/netstandard2.0 => typeproviders/fsharp41/netstandard2.0
+  pack/typeproviders/fsharp41/net45 => typeproviders/fsharp41/net45
+references
+  Aardvark.Base.TypeProviders.dll
+  

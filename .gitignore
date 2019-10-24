@@ -30,3 +30,4 @@ tmp
 *.fsproj.user
 Aardvark.log
 /build.fsx.lock
+/pack

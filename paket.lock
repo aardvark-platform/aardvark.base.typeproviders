@@ -2,8 +2,12 @@ STRATEGY: MIN
 RESTRICTION: == netstandard2.0
 NUGET
   remote: https://api.nuget.org/v3/index.json
-    FSharp.Core (4.3.0)
-
+    FSharp.Core (4.3)
+GITHUB
+  remote: fsprojects/FSharp.TypeProviders.SDK
+    src/ProvidedTypes.fs (b8727a47dd83d3e88aed8f2100f6712478c64632)
+    src/ProvidedTypes.fsi (b8727a47dd83d3e88aed8f2100f6712478c64632)
+    src/ProvidedTypesTesting.fs (b8727a47dd83d3e88aed8f2100f6712478c64632)
 GROUP Build
 NUGET
   remote: https://api.nuget.org/v3/index.json

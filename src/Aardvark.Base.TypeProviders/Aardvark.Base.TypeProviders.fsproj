@@ -1,10 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project Sdk="Microsoft.NET.Sdk">
+<Project>
+  <Import Project="Sdk.props" Sdk="Microsoft.NET.Sdk" />
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
-    <AssemblyName>Aardvark.Base.TypeProviders</AssemblyName>
+    <TargetFrameworks>net45;netstandard2.0</TargetFrameworks>
     <OutputType>Library</OutputType>
-    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <OutputPath>..\..\bin\Debug\</OutputPath>
@@ -13,11 +13,22 @@
     <OutputPath>..\..\bin\Release</OutputPath>
   </PropertyGroup>
   <ItemGroup>
-    <None Include="ProvidedTypes.fsi" />
-    <Compile Include="ProvidedTypes.fs" />
-    <Compile Include="ProvidedTypesTesting.fs" />
+    <Compile Include="AssemblyInfo.fs" />
     <Compile Include="Peano.fs" />
-    <None Include="paket.references" />
+    <Compile Include="Entry.fs" />
   </ItemGroup>
-  <Import Project="..\..\.paket\Paket.Restore.targets" />
+  <ItemGroup>
+    <PackageReference Include="FSharp.Core" Version="3.1.2.5" Condition="'$(TargetFramework)' == 'net45'" />
+    <PackageReference Include="FSharp.Core" Version="4.2.3" Condition="'$(TargetFramework)' == 'netstandard2.0'" />
+  </ItemGroup>
+  <Import Project="Sdk.targets" Sdk="Microsoft.NET.Sdk" />
+
+  <!-- We place BOTH the design-time DLLs in well-known locations with resepct to the runtime DLL -->
+  <!-- This enables any runtime DLL to be used with any host tooling running in either netcoreapp2.0+ or net461+ -->
+  <Target Name="AfterBuild">
+    <Copy SourceFiles="$(OutputPath)\Aardvark.Base.TypeProviders.dll" DestinationFolder="..\..\pack\lib\$(TargetFramework)" />
+    <Copy SourceFiles="$(OutputPath)\Aardvark.Base.TypeProviders.pdb" DestinationFolder="..\..\pack\lib\$(TargetFramework)" />
+  </Target>
+
+
 </Project>

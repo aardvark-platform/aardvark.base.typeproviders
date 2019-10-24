@@ -4,6 +4,10 @@ source https://api.nuget.org/v3/index.json
 
 nuget FSharp.Core >= 4.3.0
 
+github fsprojects/FSharp.TypeProviders.SDK src/ProvidedTypes.fsi
+github fsprojects/FSharp.TypeProviders.SDK src/ProvidedTypes.fs
+github fsprojects/FSharp.TypeProviders.SDK src/ProvidedTypesTesting.fs
+
 group Build
 source https://api.nuget.org/v3/index.json
 github aardvark-platform/aardvark.fake:v5

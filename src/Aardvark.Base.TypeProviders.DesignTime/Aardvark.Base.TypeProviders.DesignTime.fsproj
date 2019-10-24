@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project>
+  <Import Project="Sdk.props" Sdk="Microsoft.NET.Sdk" />
+  <PropertyGroup>
+    <TargetFrameworks>net45;netstandard2.0</TargetFrameworks>
+    <OutputType>Library</OutputType>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <OutputPath>..\..\bin\Debug\</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <OutputPath>..\..\bin\Release</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net45|AnyCPU'">
+    <DefineConstants>TRACE;NO_GENERATIVE;IS_DESIGNTIME</DefineConstants>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="..\..\paket-files\fsprojects\FSharp.TypeProviders.SDK\src\ProvidedTypes.fsi" />
+    <Compile Include="..\..\paket-files\fsprojects\FSharp.TypeProviders.SDK\src\ProvidedTypes.fs" />
+    <Compile Include="..\Aardvark.Base.TypeProviders\Peano.fs" />
+    <Compile Include="PeanoProvider.fs" />
+    <Compile Include="AssemblyInfo.DesignTime.fs" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="FSharp.Core" Version="3.1.2.5" Condition="'$(TargetFramework)' == 'net45'" />
+    <PackageReference Include="FSharp.Core" Version="4.2.3" Condition="'$(TargetFramework)' == 'netstandard2.0'" />
+  </ItemGroup>
+  <Import Project="Sdk.targets" Sdk="Microsoft.NET.Sdk" />
+
+  <Target Name="AfterBuild">
+    <Copy SourceFiles="..\..\bin\$(Configuration)\$(TargetFramework)\Aardvark.Base.TypeProviders.DesignTime.dll" DestinationFolder="..\..\pack\typeproviders\fsharp41\$(TargetFramework)" />
+    <Copy SourceFiles="..\..\bin\$(Configuration)\$(TargetFramework)\Aardvark.Base.TypeProviders.DesignTime.pdb" DestinationFolder="..\..\pack\typeproviders\fsharp41\$(TargetFramework)" />
+    <!-- For legacy compat (to load into pre VS2017 15.6+ or FCS 20.x.x+ tooling) we place a copy of the .NET 4.x TPDTC DLL alongside the TPRTC DLL -->
+    <Copy SourceFiles="..\..\bin\$(Configuration)\$(TargetFramework)\Aardvark.Base.TypeProviders.DesignTime.dll" DestinationFolder="..\..\pack\lib\$(TargetFramework)"/>
+    <Copy SourceFiles="..\..\bin\$(Configuration)\$(TargetFramework)\Aardvark.Base.TypeProviders.DesignTime.pdb" DestinationFolder="..\..\pack\lib\$(TargetFramework)"/>
+  </Target>
+
+</Project>
