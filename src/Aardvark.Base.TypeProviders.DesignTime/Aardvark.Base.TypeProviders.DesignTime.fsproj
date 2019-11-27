@@ -32,8 +32,10 @@
     <Copy SourceFiles="..\..\bin\$(Configuration)\$(TargetFramework)\Aardvark.Base.TypeProviders.DesignTime.dll" DestinationFolder="..\..\pack\typeproviders\fsharp41\$(TargetFramework)" />
     <Copy SourceFiles="..\..\bin\$(Configuration)\$(TargetFramework)\Aardvark.Base.TypeProviders.DesignTime.pdb" DestinationFolder="..\..\pack\typeproviders\fsharp41\$(TargetFramework)" />
     <!-- For legacy compat (to load into pre VS2017 15.6+ or FCS 20.x.x+ tooling) we place a copy of the .NET 4.x TPDTC DLL alongside the TPRTC DLL -->
-    <Copy SourceFiles="..\..\bin\$(Configuration)\$(TargetFramework)\Aardvark.Base.TypeProviders.DesignTime.dll" DestinationFolder="..\..\pack\lib\$(TargetFramework)"/>
-    <Copy SourceFiles="..\..\bin\$(Configuration)\$(TargetFramework)\Aardvark.Base.TypeProviders.DesignTime.pdb" DestinationFolder="..\..\pack\lib\$(TargetFramework)"/>
+    <Copy SourceFiles="..\..\bin\$(Configuration)\$(TargetFramework)\Aardvark.Base.TypeProviders.DesignTime.dll" DestinationFolder="..\..\pack\lib\net45" Condition="'$(TargetFramework)' == 'net45'"/>
+    <Copy SourceFiles="..\..\bin\$(Configuration)\$(TargetFramework)\Aardvark.Base.TypeProviders.DesignTime.pdb" DestinationFolder="..\..\pack\lib\net45" Condition="'$(TargetFramework)' == 'net45'"/>
+    <Copy SourceFiles="..\..\bin\$(Configuration)\$(TargetFramework)\Aardvark.Base.TypeProviders.DesignTime.dll" DestinationFolder="..\..\pack\lib\netstandard2.0" Condition="'$(TargetFramework)' == 'net45'"/>
+    <Copy SourceFiles="..\..\bin\$(Configuration)\$(TargetFramework)\Aardvark.Base.TypeProviders.DesignTime.pdb" DestinationFolder="..\..\pack\lib\netstandard2.0" Condition="'$(TargetFramework)' == 'net45'"/>
   </Target>
 
 </Project>
