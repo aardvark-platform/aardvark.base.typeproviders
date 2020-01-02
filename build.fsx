@@ -16,11 +16,12 @@ DefaultSetup.install ["src/Aardvark.Base.TypeProviders.sln"]
 
 
 Target.create "CopyFSharpCore" (fun _ ->
-    let core =
-        if config.debug then Path.Combine("bin", "Debug", "net45", "FSharp.Core.dll")
-        else Path.Combine("bin", "Release", "net45", "FSharp.Core.dll")
 
-    File.Copy(core, Path.Combine("pack", "typeproviders", "fsharp41", "net45", "FSharp.Core.dll"), true)
+    let nuget = Path.Combine(Environment.GetFolderPath Environment.SpecialFolder.UserProfile, ".nuget", "packages")
+    let fsharpCore =
+        Path.Combine(nuget, "fsharp.core", "3.1.2.5", "lib", "net40", "FSharp.Core.dll")
+
+    File.Copy(fsharpCore, Path.Combine("pack", "typeproviders", "fsharp41", "net45", "FSharp.Core.dll"), true)
 )
 
 
