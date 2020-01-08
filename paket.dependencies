@@ -8,6 +8,10 @@ github fsprojects/FSharp.TypeProviders.SDK src/ProvidedTypes.fsi
 github fsprojects/FSharp.TypeProviders.SDK src/ProvidedTypes.fs
 github fsprojects/FSharp.TypeProviders.SDK src/ProvidedTypesTesting.fs
 
+group HaveFSharpOld
+source https://api.nuget.org/v3/index.json
+nuget FSharp.Core = 3.1.2.5
+
 group Build
 source https://api.nuget.org/v3/index.json
 github aardvark-platform/aardvark.fake:v5
