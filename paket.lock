@@ -834,3 +834,7 @@ GITHUB
       Mono.Cecil (>= 0.10.4 < 0.11)
       SourceLink.Fake (>= 1.1 < 1.2)
       System.IO.Compression.ZipFile (>= 4.3 < 4.4)
+GROUP HaveFSharpOld
+NUGET
+  remote: https://api.nuget.org/v3/index.json
+    FSharp.Core (3.1.2.5)
